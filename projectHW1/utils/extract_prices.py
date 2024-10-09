@@ -1,2 +1,2 @@
 def extract_prices(products):
-    pass
+    return [product.price for product in products]
