@@ -1,7 +1,13 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from dotenv import dotenv_values
 
 app = Flask(__name__)
+
+@app.route("/sum")
+def runner():
+    a = request.args.get('a', type=int)
+    b = request.args.get('b', type=int)
+    return jsonify({'sum': a + b})
 
 def get_port() -> int:
     config = dotenv_values(".env")
