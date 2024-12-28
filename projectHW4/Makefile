@@ -12,3 +12,8 @@ install_requirements:
 
 run:
     ${PYTHON3} server.py
+
+TESTS := venv\Scripts\pytest -v ./test_controllers.py
+
+test:
+    ${TESTS}
