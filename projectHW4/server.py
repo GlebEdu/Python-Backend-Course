@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from dotenv import dotenv_values
-from .controllers import operation
+from controllers import operation
 
 app = Flask(__name__)
 
