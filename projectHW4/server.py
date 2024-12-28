@@ -1,6 +1,11 @@
 from flask import Flask, jsonify
+from dotenv import dotenv_values
 
 app = Flask(__name__)
+
+def get_port() -> int:
+    config = dotenv_values(".env")
+    return int(config.get("PORT", 5000))
 
 @app.route("/")
 def server_info():
