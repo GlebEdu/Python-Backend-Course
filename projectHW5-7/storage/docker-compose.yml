@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
+  web:
+    build:
+      context: ../ # Указываем корневую папку проекта, где находятся и Dockerfile, и backend
+      dockerfile: storage/Dockerfile  # Указываем путь к Dockerfile внутри папки storage
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app  # Монтируем папку backend в контейнер
+    
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
