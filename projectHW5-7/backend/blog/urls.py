@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostListCreateView, PostRetrieveUpdateDestroyView, CommentListCreateView, CommentRetrieveUpdateDestroyView, PostLikeListCreateView, PostLikeRetrieveUpdateDestroyView, CommentLikeListCreateView, CommentLikeRetrieveUpdateDestroyView
+from .views import PostListCreateView, PostRetrieveUpdateDestroyView, CommentListCreateView, CommentRetrieveUpdateDestroyView, PostLikeListCreateView, PostLikeRetrieveUpdateDestroyView, CommentLikeListCreateView, CommentLikeRetrieveUpdateDestroyView, PostWithLikesCountView
 
 urlpatterns = [
     path('posts/', PostListCreateView.as_view(), name='post-list-create'),
@@ -13,4 +13,7 @@ urlpatterns = [
 
     path('commentlikes/', CommentLikeListCreateView.as_view(), name='commentlike-list-create'),
     path('commentlikes/<int:pk>/', CommentLikeRetrieveUpdateDestroyView.as_view(), name='commentlike-retrieve-update-destroy'),
+
+    path('posts/with-likes/', PostWithLikesCountView.as_view(), name='post-with-likes-count'),
+
 ]
